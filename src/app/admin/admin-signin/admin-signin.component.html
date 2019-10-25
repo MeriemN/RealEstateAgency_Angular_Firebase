@@ -1,0 +1,23 @@
+
+<div class="container">
+<p>
+Hello! pease signup to enter
+</p>
+<div class="wrapper fadeInDown">
+  <div id="formContent" class="bg-dark">
+    <!-- Tabs Titles -->
+    <!-- Login Form -->
+    <form [formGroup]="adminSignInForm" (ngSubmit)="onAuth()" >
+      <input type="text" id="login" class="fadeIn second pt-2 " formControlName="email" placeholder="Email" ngModel required>
+      <input type="password" id="password" class="fadeIn third" formControlName="password" placeholder="password" ngModel required>
+      <button type="submit" class="btn bg-pink fadeIn fourth" >Log In</button>
+    </form>
+<!-- [disabled]="adminSignInForm.invalid"
+ -->    <!-- Remind Passowrd -->
+    <div id="formFooter">
+      <a class="underlineHover" href="#">Forgot Password?</a>
+    </div>
+
+  </div>
+</div>
+</div>
