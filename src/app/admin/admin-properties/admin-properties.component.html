@@ -1,0 +1,72 @@
+<!-- <p>admin-properties works!</p> -->
+<div class="rounded shadow bg-dark text-light p-5">
+	<div class="row">
+		<div class="col-12 d-flex">
+			<h2 class="font-weight-light"> <i class="fa fa-home"></i> Add a new item</h2>
+			<button class="ml-auto btn bg-pink" type="button" data-toggle="modal" data-target="#propertiesForModal">  <i class="fa fa-plus"> </i> Add</button>
+		</div>
+	</div>
+	<hr class="mt-1 mb-5 bg-white"> 
+	<div class="row">
+
+		<div *ngFor="let property of properties" class="col-12 shadow bg-white text-dark ">
+			<div class="row">
+				<h3 class="pl-3">{{ property.title}}</h3>
+				<div class="ml-auto">
+			<button class="btn btn-primary m-1"><i class="fa fa-edit"></i> </button>
+			<button class="btn btn-danger m-1" (click)="onDeleteProperty(property)"> <i class="fa fa-trash"></i></button>
+				</div>
+			</div>
+			<p>
+				{{property.category}} de {{ property.surface}} m² rooms numbers {{property.room}}
+			</p>
+		</div>
+	</div>
+</div>
+<!-- modal aria -->
+<div class="modal fade" id="propertiesForModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered" role="document">
+		<div class="modal-content">
+			<div class="rounded shadow bg-white p-5">
+				<h3 class="font-weight-light text-dark"> add new</h3>
+				<hr>
+				<form  [formGroup]="propertyForm" class="py-5" (ngSubmit)="onSaveProperty()">
+						
+					<div class="form-group">
+            <input type="text" formControlName="title" id="title" placeholder="title" class="form-control">
+          </div>
+					<div class="input-group mb-3">
+						<div class="input-group-prepend">
+						<label for="category" class="input-group-text">Category</label>	
+						</div>
+						<select formControlName="category" id="category" class="custom-select">
+              <option value="appartement">Appartement</option>
+              <option value="house">house</option>
+            </select>
+						
+					</div>
+					<div class="form-group">
+						<div class="row">
+							<div class="col-6">
+								<input type="text" id="surface" formControlName="surface" placeholder="surface (m2)">
+							</div>
+							<div class="col-6">
+								<input type="text" id="rooms" formControlName="room" placeholder="nombre de room">
+							</div>
+
+						</div>
+
+					</div>
+					<div class="form-group">
+						<textarea placeholder="Description" class="form-control" formControlName="description" id="description" cols="30" rows="10"></textarea>
+					</div>
+				<button class="btn bg-pink float-right" type="submit" >save
+				</button>
+				</form>
+			</div>
+		</div>
+	</div>
+	
+</div>
+ <!-- [disabled]="propertiesForm.invalid" -->
+
